@@ -1,0 +1,24 @@
+Total Number Of Housing Units
+
+
+Find the total number of housing units completed for each year. Output the year along with the total number of housings. Order the result by year in ascending order.
+
+
+Note: Number of housing units in thousands.
+
+
+
+
+SOLUTION:
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+housing_units_completed_us.head()
+
+housing_us = housing_units_completed_us
+
+housing_us['total'] = housing_us['south']+housing_us['west']+housing_us['midwest']+housing_us['northeast']
+
+result = housing_us.groupby('year').sum()['total'].reset_index()
+result
