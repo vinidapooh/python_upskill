@@ -1,0 +1,19 @@
+Find the total number of records that belong to each variety in the dataset. Output the variety along with the corresponding number of records. Order records by the variety in ascending order.
+
+
+OUTPUT:
+variety	sepal_length
+Setosa	50
+Versicolor	50
+Virginica	50
+
+
+SOLUTION:
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+iris.head()
+
+result = iris.groupby('variety').count()['sepal_length'].reset_index().sort_values('variety')
+result
