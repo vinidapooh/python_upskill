@@ -1,0 +1,14 @@
+
+Find all inspections which are part of an inactive program.
+
+
+
+SOLUTION:
+import pandas as pd
+df = los_angeles_restaurant_health_inspections
+
+df_final = df[df['program_status'] == 'INACTIVE']
+
+
+
+
