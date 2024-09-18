@@ -1,0 +1,16 @@
+Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments.
+Output just the absolute difference in salaries.
+
+https://platform.stratascratch.com/coding/10308-salaries-differences?code_type=2
+
+
+SOLUTION:
+import pandas as pd
+
+df = pd.merge(db_employee, db_dept, how = 'left', left_on = 'department_id',right_on = 'id')
+
+df_dept = df[(df['department'] == 'marketing') | (df['department'] == 'engineering')]
+
+df_max = df_dept.groupby('department')['salary'].max().reset_index()
+
+df_max['salary'].diff().iloc[-1]
