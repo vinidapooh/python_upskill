@@ -1,0 +1,8 @@
+Find doctors with the last name of 'Johnson' in the employee list. The output should contain both their first and last names.
+
+
+
+
+import pandas as pd
+doctors_df = employee_list[(employee_list['last_name'] == 'Johnson') & (employee_list['profession'] == 'Doctor')]
+doctors_df[['first_name','last_name']]
