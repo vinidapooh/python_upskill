@@ -1,0 +1,27 @@
+As a data scientist at Amazon Prime Video, you are tasked with enhancing the in-flight entertainment experience for Amazon’s airline partners. Your challenge is to develop a feature that suggests individual movies from Amazon's content database that fit within a given flight's duration. For flight 101, find movies whose runtime is less than or equal to the flight's duration.
+
+
+The output should list suggested movies for the flight, including 'flight_id', 'movie_id', and 'movie_duration'."
+
+DataFrames: entertainment_catalog, flight_schedule
+
+
+
+
+SOLUTION:
+
+import pandas as pd
+
+flight_movies_cross = pd.merge(
+    flight_schedule.assign(key=1), 
+    entertainment_catalog.assign(key=1), 
+    on='key'
+).drop('key', axis=1)
+
+suitable_movies = flight_movies_cross[
+    flight_movies_cross['duration'] <= flight_movies_cross['flight_duration']
+]
+
+result = suitable_movies[['flight_id','movie_id','duration']].sort_values('duration')
+
+final_result = result[result['flight_id'] == 101]
