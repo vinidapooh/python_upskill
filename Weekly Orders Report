@@ -1,0 +1,23 @@
+For each week, find the total number of orders. Include only the orders that are from the first quarter of 2023
+The output should contain 'week' and 'quantity'.
+
+
+stage_of_order	week	quantity
+received	2023-01-02	100
+shipped	2023-01-02	101
+ordered	2023-01-02	102
+received	2023-01-09	103
+shipped	2023-01-09	104
+ordered	2023-01-09	105
+received	2023-01-16	106
+
+
+
+SOLUTION:
+
+import pandas as pd
+
+orders_analysis['week'] = orders_analysis['week'].astype(str)
+first_quarter_2023 = ('2023-01','2023-02','2023-03')
+df=orders_analysis[orders_analysis['week'].str.startswith(first_quarter_2023))]
+df_result = df.groupby('week')['quantity'].sum().reset_index()
