@@ -1,0 +1,14 @@
+Find the number of crime occurrences for each day of the week.
+Output the day alongside the corresponding crime count.
+
+
+
+
+
+SOLUTION:
+import pandas as pd
+
+df = sf_crime_incidents_2014_01
+df_result = df.groupby('day_of_week')['incidnt_num'].count().reset_index()
+
+df_result
