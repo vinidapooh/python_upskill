@@ -1,0 +1,17 @@
+Find employees who started in February and have odd-numbered employee IDs.
+
+worker_id	first_name	last_name	salary	joining_date	department
+1	Monika	Arora	100000	2014-02-20	HR
+2	Niharika	Verma	80000	2014-06-11	Admin
+3	Vishal	Singhal	300000	2014-02-20	HR
+4	Amitah	Singh	500000	2014-02-20	Admin
+
+
+
+SOLUTION:
+
+worker['joining_date'] = worker['joining_date'].astype(str)
+
+worker_feb = worker[worker['joining_date'].str.startswith('2014-02')]
+
+worker_odd = worker_feb[worker_feb['worker_id']%2 !=0]
